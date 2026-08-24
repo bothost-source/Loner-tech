@@ -3,7 +3,7 @@ import './Projects.css';
 
 const PROJECTS = [
   {
-    title: 'AuraChat Bot',
+    title: 'omni ai Bot',
     desc: 'AI-powered WhatsApp & Telegram bot with natural language processing, automated responses, and multi-user support.',
     tags: ['JavaScript', 'Python', 'Node.js'],
     live: '#',
@@ -15,11 +15,11 @@ const PROJECTS = [
     desc: 'Personal portfolio site with dark/light mode, custom cursor, scroll animations, and responsive design.',
     tags: ['React', 'CSS3', 'Vite'],
     live: 'https://loner-tech.onrender.com',
-    source: 'https://github.com/bothost-source/Loner-tech',
+    source: '#',
     color: '#0b0b0c',
   },
   {
-    title: 'Vortyx Pulse',
+    title: 'AURA CHAT',
     desc: 'Cross-platform mobile application built with Dart/Flutter for business automation and workflow management.',
     tags: ['Dart', 'Flutter', 'Firebase'],
     live: '#',
@@ -27,10 +27,10 @@ const PROJECTS = [
     color: '#059669',
   },
   {
-    title: 'OMNI AI Bot',
-    desc: 'Multi-platform AI assistant with sticker replies, command handling, and real-time message processing.',
-    tags: ['JavaScript', 'Python', 'WhatsApp API'],
-    live: '#',
+    title: 'Vortyx Pulse ',
+    desc: 'A new ai api with multiple endpoints',
+    tags: ['Python'],
+    live: '',
     source: '#',
     color: '#dc2626',
   },
