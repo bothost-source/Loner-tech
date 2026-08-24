@@ -1,20 +1,33 @@
 .skills-row{ display:flex; gap:16px; flex-wrap:wrap; }
 
 .skill-chip{
-  display:flex; align-items:center; gap:12px;
-  border:1px solid var(--line); border-radius:12px; padding:18px 24px;
-  background:var(--glass); transition:all .2s; flex:1; min-width:180px;
+  display:flex; align-items:flex-start; gap:14px;
+  border:1px solid var(--line); border-radius:14px; padding:20px 24px;
+  background:var(--glass); transition:all .2s; flex:1; min-width:220px;
 }
 .skill-chip:hover{
   border-color:var(--line-bright); background:var(--glass-hover); transform:translateY(-2px);
 }
 .skill-chip__glyph{
-  font-size:1.2rem; font-weight:600; width:34px; height:34px;
-  border:1px solid var(--line-bright); border-radius:8px;
+  font-size:1.1rem; font-weight:600; width:38px; height:38px;
+  border:1px solid var(--line-bright); border-radius:10px;
   display:flex; align-items:center; justify-content:center; flex-shrink:0;
 }
+.skill-chip__info{ flex:1; min-width:0; }
 .skill-chip__name{ font-weight:600; font-size:0.98rem; }
 .skill-chip__role{ font-size:0.78rem; color:var(--ink-faint); margin-top:2px; }
+
+.skill-chip__bar-wrap{
+  margin-top:12px; height:4px; border-radius:100px;
+  background:var(--line); overflow:hidden;
+}
+.skill-chip__bar{
+  height:100%; border-radius:100px; background:var(--ink);
+  width:0; transition:width 1.2s cubic-bezier(.22,1,.36,1);
+}
+.skill-chip__bar.animate{
+  width:var(--level);
+}
 
 @media(max-width:560px){
   .skill-chip{ min-width:100%; }
