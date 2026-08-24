@@ -26,23 +26,30 @@
   font-family:'Space Grotesk', sans-serif; font-weight:700;
   font-size:clamp(2.6rem, 7vw, 5.2rem); line-height:0.98; letter-spacing:-0.03em;
 }
+.hero__sub-wrap{
+  margin-top:16px;
+  min-height:1.6em;
+}
 .hero__sub{
   font-family:'JetBrains Mono', monospace; font-size:clamp(0.85rem,1.6vw,1rem);
-  color:var(--ink-dim); margin-top:16px; letter-spacing:0.02em;
+  color:var(--ink-dim); letter-spacing:0.02em;
 }
+.type-cursor{
+  display:inline-block; width:2px; height:1.1em; background:var(--ink);
+  margin-left:2px; animation:blink 1s step-end infinite; vertical-align:text-bottom;
+}
+@keyframes blink{ 0%,100%{ opacity:1; } 50%{ opacity:0; } }
+
 .hero__cta{
   display:flex; gap:14px; margin-top:34px; justify-content:center; flex-wrap:wrap;
 }
 
-/* The signature element: one large real 3D-render image, framed like a
-   dark "viewport" set into the white page — deliberate contrast rather
-   than a live animation. */
 .hero__image-wrap{
   width:min(760px, 90vw);
   border-radius:20px;
   overflow:hidden;
   border:1px solid var(--line);
-  box-shadow:0 30px 60px -20px rgba(0,0,0,0.25);
+  box-shadow:var(--shadow);
 }
 .hero__image{
   width:100%;
