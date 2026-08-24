@@ -2,11 +2,14 @@ import { useState } from 'react';
 import useReveal from '../useReveal';
 import './Contact.css';
 
+const FORMSPREE_URL = 'https://formspree.io/f/xdenvqyk';
+
 export default function Contact() {
   const [ref, inView] = useReveal();
   const [form, setForm] = useState({ name: '', email: '', type: '', message: '' });
   const [errors, setErrors] = useState({});
   const [toast, setToast] = useState('');
+  const [sending, setSending] = useState(false);
 
   const validate = () => {
     const e = {};
@@ -19,13 +22,34 @@ export default function Contact() {
     return Object.keys(e).length === 0;
   };
 
-  const handleSubmit = (ev) => {
+  const handleSubmit = async (ev) => {
     ev.preventDefault();
     if (!validate()) return;
-    // Here you'd normally send to a backend
-    setToast('Message sent! I\'ll get back to you soon.');
-    setForm({ name: '', email: '', type: '', message: '' });
-    setTimeout(() => setToast(''), 4000);
+    setSending(true);
+
+    const formData = new FormData();
+    formData.append('name', form.name);
+    formData.append('email', form.email);
+    formData.append('type', form.type);
+    formData.append('message', form.message);
+
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        setToast('Message sent! I\'ll get back to you soon.');
+        setForm({ name: '', email: '', type: '', message: '' });
+      } else {
+        setToast('Something went wrong. Please try again.');
+      }
+    } catch {
+      setToast('Network error. Please check your connection and try again.');
+    }
+    setSending(false);
+    setTimeout(() => setToast(''), 5000);
   };
 
   const handleChange = (field) => (ev) => {
@@ -60,29 +84,35 @@ export default function Contact() {
           <div className="contact__field">
             <input
               type="text"
+              name="name"
               placeholder="Your name"
               className={`form-input ${errors.name ? 'error' : ''}`}
               value={form.name}
               onChange={handleChange('name')}
+              disabled={sending}
             />
             {errors.name && <span className="contact__error">{errors.name}</span>}
           </div>
           <div className="contact__field">
             <input
               type="email"
+              name="email"
               placeholder="your@email.com"
               className={`form-input ${errors.email ? 'error' : ''}`}
               value={form.email}
               onChange={handleChange('email')}
+              disabled={sending}
             />
             {errors.email && <span className="contact__error">{errors.email}</span>}
           </div>
         </div>
         <div className="contact__field">
           <select
+            name="type"
             className={`form-input ${errors.type ? 'error' : ''}`}
             value={form.type}
             onChange={handleChange('type')}
+            disabled={sending}
           >
             <option value="">Project type</option>
             <option value="website">Website</option>
@@ -95,15 +125,19 @@ export default function Contact() {
         </div>
         <div className="contact__field">
           <textarea
+            name="message"
             placeholder="Tell me about your project..."
             rows="4"
             className={`form-input ${errors.message ? 'error' : ''}`}
             value={form.message}
             onChange={handleChange('message')}
+            disabled={sending}
           />
           {errors.message && <span className="contact__error">{errors.message}</span>}
         </div>
-        <button type="submit" className="btn btn-solid contact__submit">Send message</button>
+        <button type="submit" className="btn btn-solid contact__submit" disabled={sending}>
+          {sending ? 'Sending...' : 'Send message'}
+        </button>
       </form>
 
       <div className={`toast ${toast ? 'show' : ''}`}>{toast}</div>
