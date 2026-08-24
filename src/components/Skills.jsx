@@ -2,10 +2,10 @@ import useReveal from '../useReveal';
 import './Skills.css';
 
 const SKILLS = [
-  { glyph: '<>', name: 'HTML', role: 'Markup · page structure' },
-  { glyph: 'JS', name: 'JavaScript', role: 'Web apps · bots · backend' },
-  { glyph: 'Py', name: 'Python', role: 'Bots · automation · backend' },
-  { glyph: 'Dt', name: 'Dart', role: 'Cross-platform mobile apps' },
+  { glyph: '<>', name: 'HTML', role: 'Markup · page structure', level: 95 },
+  { glyph: 'JS', name: 'JavaScript', role: 'Web apps · bots · backend', level: 90 },
+  { glyph: 'Py', name: 'Python', role: 'Bots · automation · backend', level: 88 },
+  { glyph: 'Dt', name: 'Dart', role: 'Cross-platform mobile apps', level: 82 },
 ];
 
 export default function Skills() {
@@ -21,9 +21,15 @@ export default function Skills() {
         {SKILLS.map((s) => (
           <div className="skill-chip" key={s.name}>
             <div className="skill-chip__glyph mono">{s.glyph}</div>
-            <div>
+            <div className="skill-chip__info">
               <div className="skill-chip__name">{s.name}</div>
               <div className="skill-chip__role mono">{s.role}</div>
+              <div className="skill-chip__bar-wrap">
+                <div
+                  className={`skill-chip__bar ${inView ? 'animate' : ''}`}
+                  style={{ '--level': `${s.level}%` }}
+                />
+              </div>
             </div>
           </div>
         ))}
