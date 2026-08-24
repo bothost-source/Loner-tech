@@ -10,7 +10,7 @@
 .contact__sub{
   color:var(--ink-dim); margin-bottom:40px; max-width:44ch; margin-left:auto; margin-right:auto;
 }
-.contact__methods{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.contact__methods{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:48px; }
 
 .contact-card{
   display:flex; align-items:center; gap:14px;
@@ -29,6 +29,26 @@
 }
 .contact-card__value{ font-weight:600; font-size:0.95rem; margin-top:2px; }
 
+/* Form */
+.contact__form{
+  max-width:560px; margin:0 auto;
+  display:flex; flex-direction:column; gap:16px;
+  text-align:left;
+}
+.contact__form-row{
+  display:grid; grid-template-columns:1fr 1fr; gap:16px;
+}
+.contact__field{ position:relative; }
+.contact__field select{ cursor:pointer; appearance:none; }
+.contact__field select option{ background:var(--bg); color:var(--ink); }
+.contact__error{
+  display:block; font-size:11.5px; color:#dc2626; margin-top:4px;
+}
+.form-input.error{ border-color:#dc2626; }
+.contact__submit{ align-self:flex-start; margin-top:4px; }
+
 @media(max-width:560px){
   .contact-card{ min-width:100%; }
+  .contact__form-row{ grid-template-columns:1fr; }
+  .contact__submit{ width:100%; text-align:center; }
 }
