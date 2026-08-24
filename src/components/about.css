@@ -1,0 +1,13 @@
+.about{
+  display:grid; grid-template-columns:1fr 1.2fr; gap:60px; align-items:start;
+}
+.about__title{
+  font-family:'Space Grotesk', sans-serif; font-size:clamp(1.8rem,3vw,2.4rem);
+  font-weight:600; letter-spacing:-0.02em; line-height:1.15;
+}
+.about__body p{ color:var(--ink-dim); font-size:1.02rem; line-height:1.75; margin-bottom:18px; }
+.about__body p:last-child{ margin-bottom:0; }
+
+@media(max-width:900px){
+  .about{ grid-template-columns:1fr; gap:24px; }
+}
