@@ -1,0 +1,16 @@
+.services-grid{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+}
+.service-card{ background:var(--bg); padding:36px 32px; transition:background .25s; }
+.service-card:hover{ background:var(--glass-hover); }
+.service-card__idx{ font-size:11.5px; color:var(--ink-faint); margin-bottom:20px; display:block; }
+.service-card h3{
+  font-family:'Space Grotesk', sans-serif; font-size:1.25rem; font-weight:600;
+  margin-bottom:10px; letter-spacing:-0.01em;
+}
+.service-card p{ color:var(--ink-dim); font-size:0.92rem; line-height:1.6; }
+
+@media(max-width:900px){
+  .services-grid{ grid-template-columns:1fr; }
+}

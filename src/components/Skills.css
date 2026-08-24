@@ -1,0 +1,21 @@
+.skills-row{ display:flex; gap:16px; flex-wrap:wrap; }
+
+.skill-chip{
+  display:flex; align-items:center; gap:12px;
+  border:1px solid var(--line); border-radius:12px; padding:18px 24px;
+  background:var(--glass); transition:all .2s; flex:1; min-width:180px;
+}
+.skill-chip:hover{
+  border-color:var(--line-bright); background:var(--glass-hover); transform:translateY(-2px);
+}
+.skill-chip__glyph{
+  font-size:1.2rem; font-weight:600; width:34px; height:34px;
+  border:1px solid var(--line-bright); border-radius:8px;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.skill-chip__name{ font-weight:600; font-size:0.98rem; }
+.skill-chip__role{ font-size:0.78rem; color:var(--ink-faint); margin-top:2px; }
+
+@media(max-width:560px){
+  .skill-chip{ min-width:100%; }
+}
